@@ -11,11 +11,12 @@
     <div>
 
         <p> Catalogue</p>
-        <div>
-            <h4> Product 1 </h4>
-            <p> Price: ₹ 10 </p>
-            <button onclick="buy()"> BUY </button>
-        </div>
+        <form action="{% url 'createOrder' %}" method="POST">
+            {% csrf_token %}
+            <h4 name="heading"> Product 1 </h4>
+            <input type="text" disabled name="price" value="Price: ₹ 10"> 
+            <button type="submit"> BUY </button>
+        </form>
         <br><br>
         <div>
             <h4> Product 2 </h4>

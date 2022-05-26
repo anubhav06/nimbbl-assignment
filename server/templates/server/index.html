@@ -1,0 +1,29 @@
+{% extends "server/layout.html" %}
+{% load static %}
+
+
+{% block script %}
+    <script src="{% static 'server/apiScript.js' %}" ></script>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+
+        <p> Catalogue</p>
+        {% for product in products %}
+            <form action="{% url 'createOrder' product.id %}" method="POST">
+                {% csrf_token %}
+                <h4> {{product.name}} </h4>
+                <p> {{product.price}} </p>
+                <button type="submit"> BUY </button>
+            </form>
+            <br><br>
+        {% endfor %}
+        
+    </div>
+
+
+
+{% endblock %}
+

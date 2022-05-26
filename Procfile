@@ -1,1 +1,1 @@
-web: gunicorn networkApp.wsgi
+web: gunicorn nimbbl_assginment.wsgi

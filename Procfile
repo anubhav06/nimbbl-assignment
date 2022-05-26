@@ -1,1 +1,1 @@
-web: gunicorn nimbbl_assginment.wsgi
+web: gunicorn nimbbl_assignment.wsgi

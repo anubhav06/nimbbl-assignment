@@ -11,24 +11,15 @@
     <div>
 
         <p> Catalogue</p>
-        <form action="{% url 'createOrder' %}" method="POST">
-            {% csrf_token %}
-            <h4 name="heading"> Product 1 </h4>
-            <input type="text" disabled name="price" value="Price: ₹ 10"> 
-            <button type="submit"> BUY </button>
-        </form>
-        <br><br>
-        <div>
-            <h4> Product 2 </h4>
-            <p> Price : ₹ 20 </p>
-            <button> BUY </button>
-        </div>
-        <br><br>
-        <div>
-            <h4> Product 3 </h4>
-            <p> Price : ₹ 15 </p>
-            <button> BUY </button>
-        </div>
+        {% for product in products %}
+            <form action="{% url 'createOrder' product.id %}" method="POST">
+                {% csrf_token %}
+                <h4> {{product.name}} </h4>
+                <p> {{product.price}} </p>
+                <button type="submit"> BUY </button>
+            </form>
+            <br><br>
+        {% endfor %}
         
     </div>
 

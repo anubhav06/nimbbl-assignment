@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Checkout Assignment</title>
+        
+        
+    </head>
+    <body>
+    </body>
+    <script src="https://api.nimbbl.tech/static/assets/js/checkout.js"></script>
+    <script>
+    var access_key = "{{access_key}}";
+    var order_id= "{{order_id}}";
+    console.log('Acess Key: ', access_key)
+    console.log('Order ID', order_id)
+    var options = {
+                    "access_key": "{{access_key}}", // Enter the Key ID generated from the Dashboard
+                    "order_id": "{{order_id}}", // Enter the order_id from the create-order api
+                    "callback_handler": function (response) {
+                    alert(response.nimbbl_transaction_id);
+                    alert(response.nimbbl_order_id);
+                    alert(response.nimbbl_signature);
+                    alert(response.status);
+                },
+            };
+
+    window.checkout = new NimbblCheckout(options);
+    window.checkout.open(order_id);
+
+    </script>
+</html>
